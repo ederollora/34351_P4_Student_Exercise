@@ -1,0 +1,23 @@
+P4_VM_TYPE = "TUTORIAL"
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "bento/ubuntu-16.04"
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "34351_DTU_P4_" + P4_VM_TYPE + "_" + Time.now.strftime("(%Y-%m-%d)")
+    vb.gui = true
+    vb.cpus = 2
+    vb.memory = 4096
+    vb.customize ["storageattach", :id,
+                    "--storagectl", "IDE Controller",
+                    "--port", "0", "--device", "1",
+                    "--type", "dvddrive",
+                    "--medium", "emptydrive"]
+    vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
+    vb.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
+    vb.customize ["modifyvm", :id, "--vram", "80"]
+  end
+  config.vm.hostname = "p4"
+  config.vm.network "private_network", :type => 'dhcp', :adapter => 2
+  config.vm.provision "shell", path: "root-bootstrap.sh"
+  config.vm.provision :reload
+end
