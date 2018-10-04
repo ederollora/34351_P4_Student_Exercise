@@ -19,12 +19,14 @@ parser MyParser(packet_in packet,
                 inout standard_metadata_t standard_metadata) {
 
     state start {
-        // TODO: Start here parsing headers. Check basic.p4 to have an idea on
-        // how to do the parsing. Remember to support parsing for
-        // Ethernet, IPv4, TCP, UDP, ARP and ICMP. (Although we support TCP,
-        // you might actually not use it even if you parse it)
-        // DHCP (bootp + DHCP Options) is already done below.
+        // TODO: Start here parsing the Ethernet header. Check basic.p4 to have an idea on
+        // how to do the parsing.
     }
+
+    // TODO: Write the rest of parsing blocks. Remember to support parsing for
+    // Ethernet, IPv4, TCP, UDP, ARP and ICMP. (Although we support TCP,
+    // you might actually not use it even if you parse it)
+    // DHCP (bootp + DHCP Options) is already done below.
 
     state parse_bootp {
         packet.extract(hdr.bootp);
@@ -326,7 +328,7 @@ control MyComputeChecksum(inout headers hdr, inout metadata meta) {
 }
 
 
-/*************************************************************************
+/************************************************************************
 ***********************  D E P A R S E R  *******************************
 *************************************************************************/
 
@@ -334,7 +336,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         // TODO: emit all the headers you have parsed in "MyParser"
         // To ease the implementation, we have left the DHCP options but
-        // you still need to emit the "bootp" part of the DHCP header
+        // you still need to emit the "Bootp" part of the DHCP header
         packet.emit(hdr.dhcp_op_53);
         packet.emit(hdr.dhcp_op_1);
         packet.emit(hdr.dhcp_op_3);

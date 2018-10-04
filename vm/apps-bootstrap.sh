@@ -36,6 +36,7 @@ sudo apt-get update
 # Lubuntu desktop and some applications
 sudo apt-get -y --no-install-recommends install \
     lubuntu-desktop \
+    arping \
     atom \
     gdebi \
     google-chrome-stable \

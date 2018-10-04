@@ -139,7 +139,7 @@ mn -c
 
 ## Next Steps
 
-Congratulations, your implementation works! Now wait until course instructors upload the final exercise to the repository. if the final exercise is there, you will find it under [final_exercise](../final_exercise)! Remember that if the exercise folder is there [final_exercise] but no contents have been added, you can always run the command:
+Congratulations, your implementation works! Now wait until course instructors upload the final exercise to the repository. If the final exercise is already there, you will find it under [4_answering_machine](../4_answering_machine)! Remember that if the exercise folder is there [4_answering_machine](../4_answering_machine) but no contents have been added, you can always run the command:
 ```bash
 git pull
 ```
