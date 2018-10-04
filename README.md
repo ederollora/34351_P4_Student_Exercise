@@ -10,7 +10,7 @@ Welcome to the your first contact with the P4 language! We have prepared a set o
 
 3. [Source Routing](./exercises/3_source_routing)
 
-4. [Answering Machine](./exercises/4_answering_machine)
+4. [Answering Machine](./exercises/4_final_exercise)
 
 
 ## Slides
