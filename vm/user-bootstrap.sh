@@ -14,12 +14,10 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 #Atom requirements
 sudo add-apt-repository ppa:webupd8team/atom -y
 
-sudo apt-get update
-
 # Wireshark requirement
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
-echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure wireshark-common
+sudo add-apt-repository ppa:wireshark-dev/stable
+
+sudo apt-get update
 
 #Chrome
 mkdir -p ~/Downloads
@@ -35,33 +33,16 @@ sudo apt-get update
 
 # Lubuntu desktop and some applications
 sudo apt-get -y --no-install-recommends install \
-    lubuntu-desktop \
-    arping \
     atom \
     gdebi \
     google-chrome-stable \
     sublime-text \
     terminator \
-    vim \
-    wget
+    wireshark
 
 # Guest additions
 sudo apt-get -y --no-install-recommends install \
-    linux-headers-$(uname -r) \
-    build-essential \
     dkms
-
-
-# Disable screensaver
-sudo apt-get -y remove light-locker
-
-# Automatically log into the student user
-cat << EOF | sudo tee -a /etc/lightdm/lightdm.conf.d/10-lightdm.conf
-[SeatDefaults]
-autologin-user=student
-autologin-user-timeout=0
-user-session=Lubuntu
-EOF
 
 # Vim
 cd /home/student
@@ -145,7 +126,7 @@ EOF
 cat > ${DESKTOP}/Google\ Chrome << EOF
 [Desktop Entry]
 Encoding=UTF-8
-Name=Google Ghrome
+Name=Google Chrome
 Name[en_US]=Google Chrome
 Exec=/usr/bin/google-chrome-stable %U
 Terminal=false
@@ -190,3 +171,5 @@ if [[ "$response" -eq 200 ]] ; then
   rm *.iso
   set -e
 fi
+
+sudo reboot
