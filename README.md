@@ -12,6 +12,8 @@ Welcome to the your first contact with the P4 language! We have prepared a set o
 
 4. [Answering Machine](./exercises/4_final_exercise)
 
+5. [Mixing protocols](./exercises/5_project)
+
 
 ## Slides
 
